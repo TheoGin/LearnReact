@@ -1,3 +1,5 @@
+import React from "react";
+
 const three = "three";
 const arr = [
   (<div key={11}>123</div>),
@@ -61,7 +63,24 @@ const arr2 = stuInfo.map( item => {
     }
 ]
 */
-console.log(arr2)
+// console.log(arr2)
+
+const element1 = (
+  <h1 className="compare">
+    JSX  的本质其实就是 React.createElement 方法的一种语法糖。
+  </h1>
+)
+console.log('element1', element1) // element1 {$$typeof: Symbol(react.transitional.element), type: 'h1', key: null, props: {…}, _owner: null, …}
+const element2 = React.createElement(
+  'h1',
+  {
+    className: 'compare',
+  },
+  "JSX  的本质其实就是 React.createElement 方法的一种语法糖。"
+)
+
+// React.createElement函数返回的是虚拟DOM对象
+console.log('element2', element2) // element2 {$$typeof: Symbol(react.transitional.element), type: 'h1', key: null, props: {…}, _owner: null, …}
 
 const ele = (
   // 1. 根元素只能有一个 <></>空元素，不会添加新元素
@@ -91,6 +110,10 @@ const ele = (
     {/* 6. JSX 允许在模板中插入数组，数组会自动展开所有成员 */}
     {arr}
     {arr2}
+
+    {element1}
+    {/* JSX 是一种 JavaScript 的语法扩展，Babel  会把 JSX 转译成一个名为 React.createElement 函数调用。 */}
+    {element2}
   </>
 );
 
