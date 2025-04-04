@@ -1,13 +1,21 @@
 import React from "react";
+import Child1 from "./components/Child1";
+import Child2 from "./components/Child2";
+import Button from "./components/Button";
 
 // 类组件
 class App extends React.Component {
   constructor() {
     super();
-    // 1. 在constructor中，设置组件自身的数据状态
     this.state = {
-      num: 1
+      name: 'Sophotheo',
+      age: 18
     }
+
+    // 1. 在constructor中，设置组件自身的数据状态
+    // this.state = {
+    //   num: 1
+    // }
     // this.timer = setInterval(() => {
     //   // 如果改变状态的代码不处于某个 HTML 元素的事件中，则setState是同步的
     //   this.setState({
@@ -80,11 +88,19 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('render方法执行')
+    // console.log('render方法执行')
     return (
       <>
-        <div>{this.state.num}</div>
-        <button onClick={ this.handleClick }>+1</button>
+        {/* <div>{this.state.num}</div>
+        <button onClick={ this.handleClick }>+1</button> */}
+        <Child1 stuInfo={this.state} str="abc" num={11} isTrue={true} />
+        <Child2 stuInfo={this.state} />
+        {/* Button组件实现插槽 */}
+        <Button>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+        </Button>
       </>
     );
   }
