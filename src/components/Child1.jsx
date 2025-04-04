@@ -1,7 +1,7 @@
 import React from 'react';
 
 // 如果是函数组件，props  作为函数的一个参数传入
-function Test(props) {
+function Child1(props) {
     return (
         <>
             <div>姓名：{ props.stuInfo.name }</div>
@@ -13,4 +13,4 @@ function Test(props) {
     );
 }
 
-export default Test;
+export default Child1;
