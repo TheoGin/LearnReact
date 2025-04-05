@@ -8,9 +8,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: 'Sophotheo',
-      age: 18
-    }
+      name: "Sophotheo",
+      age: 18,
+    };
 
     // 1. 在constructor中，设置组件自身的数据状态
     // this.state = {
@@ -43,7 +43,7 @@ class App extends React.Component {
     // // 改用 ：setState()
     // this.setState({
     //   num: newNum
-    // }) 
+    // })
     // // this.setState({
     // //   num: this.state.num + 1
     // // })
@@ -59,7 +59,7 @@ class App extends React.Component {
     // }, () => {
     //   console.log(this.state.num, 'num')
     // })
-    
+
     // 3. 如果要使用改变之后的状态，需要使用回调函数（setState  的第二个参数），但这样会产生回调地狱！！
     // this.setState({
     //   num: this.state.num + 1
@@ -69,23 +69,26 @@ class App extends React.Component {
     //   }, () => {
     //     this.setState({
     //       num: this.state.num + 1
-    //     }) 
-    //   }) 
-    // }) 
+    //     })
+    //   })
+    // })
 
     // 4. 如果新的状态要根据之前的状态进行运算，使用函数的方式改变状态（setState  的第一个函数）
+    this.setState(
+      (lastState) => ({
+        num: lastState.num + 1,
+      }),
+      () => {
+        console.log(this.state.num, "num"); // 易错：打印的是4，而不是2！！！因为React 会对异步的 setState 进行优化，将多次 setState 进行合并（将多次状态改变完成后，再统一对 state 进行改变，然后触发 render ）
+      }
+    );
     this.setState((lastState) => ({
-      num: lastState.num + 1
-    }), () => {
-      console.log(this.state.num, 'num') // 易错：打印的是4，而不是2！！！因为React 会对异步的 setState 进行优化，将多次 setState 进行合并（将多次状态改变完成后，再统一对 state 进行改变，然后触发 render ）
-    })
+      num: lastState.num + 1,
+    }));
     this.setState((lastState) => ({
-      num: lastState.num + 1
-    }))
-    this.setState((lastState) => ({
-      num: lastState.num + 1
-    }))
-  }
+      num: lastState.num + 1,
+    }));
+  };
 
   render() {
     // console.log('render方法执行')
@@ -93,8 +96,8 @@ class App extends React.Component {
       <>
         {/* <div>{this.state.num}</div>
         <button onClick={ this.handleClick }>+1</button> */}
-        <Child1 stuInfo={this.state} str="abc" num={11} isTrue={true} />
-        <Child2 stuInfo={this.state} />
+        <Child1 str="abc" num={11} isTrue={true} />
+        <Child2 />
         {/* Button组件实现插槽 */}
         <Button>
           <div>1</div>
@@ -105,5 +108,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;
