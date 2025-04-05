@@ -97,7 +97,7 @@ class App extends React.Component {
         {/* <div>{this.state.num}</div>
         <button onClick={ this.handleClick }>+1</button> */}
         <Child1 str="abc" num={11} isTrue={true} />
-        <Child2 />
+        <Child2 str="dasew" />
         {/* Button组件实现插槽 */}
         <Button>
           <div>1</div>

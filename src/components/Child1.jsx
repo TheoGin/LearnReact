@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // 如果是函数组件，props  作为函数的一个参数传入
 function Child1({
@@ -33,5 +34,9 @@ function Child1({
 //     age: 38,
 //   },
 // };
+
+Child1.propTypes  = {
+    num: PropTypes.number
+}
 
 export default Child1;
