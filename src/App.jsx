@@ -90,13 +90,17 @@ class App extends React.Component {
     }));
   };
 
+  handleChildToParent(param) {
+    console.log(param)
+  }
+
   render() {
     // console.log('render方法执行')
     return (
       <>
         {/* <div>{this.state.num}</div>
         <button onClick={ this.handleClick }>+1</button> */}
-        <Child1 str="abc" num={11} isTrue={true} />
+        <Child1 str="abc" num={11} isTrue={true} handleChildToParent={this.handleChildToParent} />
         <Child2 str="dasew" />
         {/* Button组件实现插槽 */}
         <Button>

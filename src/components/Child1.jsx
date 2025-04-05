@@ -9,8 +9,13 @@ function Child1({
   },
   str,
   num,
-  isTrue
+  isTrue,
+  handleChildToParent
 }) {
+
+    function handleTransmit() {
+        handleChildToParent(132)
+    }
   return (
     <>
       <div>姓名：{stuInfo.name}</div>
@@ -18,6 +23,7 @@ function Child1({
       <div>字符串: {str}</div>
       <div>数字: {num}</div>
       <div>布尔值: {isTrue ? "true" : "false"}</div>
+      <button onClick={handleTransmit}>触发子组件给父组件传递数据</button>
       {/* <div>姓名：{props.stuInfo.name}</div>
       <div>年龄：{props.stuInfo.age}</div>
       <div>字符串: {props.str}</div>
@@ -35,7 +41,7 @@ function Child1({
 //   },
 // };
 
-Child1.propTypes  = {
+Child1.propTypes = {
     num: PropTypes.number
 }
 
